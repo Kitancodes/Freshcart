@@ -1,0 +1,106 @@
+
+
+## Overview
+
+                   │        Analyzed Image        
+───────────────────┼──────────────────────────────
+ Target            │  freshcart-checkout-api:1.2  
+   digest          │  e3f71baf3bdb                
+   platform        │ linux/amd64                  
+   vulnerabilities │    0C     3H     6M     0L   
+   size            │ 72 MB                        
+   packages        │ 253                          
+
+
+## Packages and Vulnerabilities
+
+   0C     2H     0M     0L  brace-expansion 5.0.7
+pkg:npm/brace-expansion@5.0.7
+
+    x HIGH CVE-2026-69152 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-69152?s=github&n=brace-expansion&t=npm&vr=%3E%3D4.0.0%2C%3C5.0.9
+      Affected range : >=4.0.0                                      
+                     : <5.0.9                                       
+      Fixed version  : 5.0.9                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+    x HIGH CVE-2026-14257 [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/CVE-2026-14257?s=github&n=brace-expansion&t=npm&vr=%3E%3D4.0.0%2C%3C5.0.8
+      Affected range : >=4.0.0                                      
+                     : <5.0.8                                       
+      Fixed version  : 5.0.8                                        
+      CVSS Score     : 7.5                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H 
+    
+
+   0C     1H     2M     0L  ip-address 10.2.0
+pkg:npm/ip-address@10.2.0
+
+    x HIGH CVE-2026-69192 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-69192?s=github&n=ip-address&t=npm&vr=%3C%3D10.3.0
+      Affected range : <=10.3.0                                                        
+      Fixed version  : 10.3.1                                                          
+      CVSS Score     : 7.7                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-69198 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-69198?s=github&n=ip-address&t=npm&vr=%3E%3D10.1.1%2C%3C%3D10.2.1
+      Affected range : >=10.1.1                                                        
+                     : <=10.2.1                                                        
+      Fixed version  : 10.2.2                                                          
+      CVSS Score     : 6.9                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+    x MEDIUM CVE-2026-54272 [Improper Input Validation]
+      https://scout.docker.com/v/CVE-2026-54272?s=github&n=ip-address&t=npm&vr=%3E%3D10.1.1%2C%3C%3D10.2.0
+      Affected range : >=10.1.1                                                        
+                     : <=10.2.0                                                        
+      Fixed version  : 10.2.1                                                          
+      CVSS Score     : 6.9                                                             
+      CVSS Vector    : CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N 
+    
+
+   0C     0H     3M     0L  undici 6.27.0
+pkg:npm/undici@6.27.0
+
+    x MEDIUM CVE-2026-16729 [Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')]
+      https://scout.docker.com/v/CVE-2026-16729?s=github&n=undici&t=npm&vr=%3C6.28.0
+      Affected range : <6.28.0                                      
+      Fixed version  : 6.28.0                                       
+      CVSS Score     : 4.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N 
+    
+    x MEDIUM CVE-2026-16728 [Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')]
+      https://scout.docker.com/v/CVE-2026-16728?s=github&n=undici&t=npm&vr=%3C6.28.0
+      Affected range : <6.28.0                                      
+      Fixed version  : 6.28.0                                       
+      CVSS Score     : 4.8                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N 
+    
+    x MEDIUM CVE-2026-15157 [Improper Neutralization of CRLF Sequences ('CRLF Injection')]
+      https://scout.docker.com/v/CVE-2026-15157?s=github&n=undici&t=npm&vr=%3C6.28.0
+      Affected range : <6.28.0                                      
+      Fixed version  : 6.28.0                                       
+      CVSS Score     : 4.2                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N 
+    
+
+   0C     0H     1M     0L  tar 7.5.19
+pkg:npm/tar@7.5.19
+
+    x MEDIUM GHSA-r292-9mhp-454m [Uncontrolled Resource Consumption]
+      https://scout.docker.com/v/GHSA-r292-9mhp-454m?s=github&n=tar&t=npm&vr=%3C%3D7.5.20
+      Affected range : <=7.5.20                                     
+      Fixed version  : 7.5.21                                       
+      CVSS Score     : 5.3                                          
+      CVSS Vector    : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L 
+    
+
+
+9 vulnerabilities found in 4 packages
+  CRITICAL  0 
+  HIGH      3 
+  MEDIUM    6 
+  LOW       0 
+

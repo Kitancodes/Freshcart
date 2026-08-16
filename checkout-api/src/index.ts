@@ -1,3 +1,6 @@
+
+
+import "dotenv/config";
 import express from "express";
 import { healthRouter } from "./routes/health";
 import { productsRouter } from "./routes/products";

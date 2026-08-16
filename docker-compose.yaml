@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: freshcart
+      POSTGRES_USER: freshcart
+      POSTGRES_PASSWORD: freshcart
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./checkout-api/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U freshcart -d freshcart" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  checkout-api:
+    build:
+      context: ./checkout-api
+    environment:
+      DATABASE_URL: postgres://freshcart:freshcart@db:5432/freshcart
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  storefront:
+    build:
+      context: ./storefront
+    ports:
+      - "8080:8080"
+    depends_on:
+      - checkout-api
+
+volumes:
+  postgres_data:

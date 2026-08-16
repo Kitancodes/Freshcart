@@ -1,0 +1,63 @@
+[
+    {
+        "Id": "sha256:8b78d9ba523c14842e3c30e01107e08f20240d1fb7528dd59bb2e6b6f33f6960",
+        "RepoTags": [
+            "freshcart-checkout-api:1.2"
+        ],
+        "RepoDigests": [
+            "freshcart-checkout-api@sha256:8b78d9ba523c14842e3c30e01107e08f20240d1fb7528dd59bb2e6b6f33f6960"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-08-15T20:00:38.844242545Z",
+        "Config": {
+            "User": "node",
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NODE_VERSION=24.19.0",
+                "YARN_VERSION=1.22.22"
+            ],
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "Cmd": [
+                "npm",
+                "start"
+            ],
+            "WorkingDir": "/app",
+            "ArgsEscaped": true
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 72462729,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:34884abbe92863fce933ed7c39c0e045631af0ed86d5cc0dfbdf9fdca426ce3c",
+                "sha256:e1f5bc212f66ae7d84a2a7fe70a658e80ec21226c1fec757b86a5691cfd97683",
+                "sha256:2e92618b1d53428b5a4a2ae1b5c537ec63ef2a965946006b36c3027a8887e2ce",
+                "sha256:0948fc140bebfa482876a45c1dadcf79c3957b23cf5633006ec53a5dafc7b4a0",
+                "sha256:0476899b27b91df14b234eaa34dc953206c174e734f6aebd694050242ad3284c",
+                "sha256:1f90f3d7a7039f9549cf9a30777109c8d79522657d4113571d7f0f0802264028",
+                "sha256:12aade2679a9b9181bc59f331acd7cc56cabbbf8640d7388551877276fd87754",
+                "sha256:b1c7088db18ca7638d61ef49c11f2389d83cd372ebe89d74dc22ec1e9b2765bd",
+                "sha256:07077e8bab6b4eeb0ce4425bb65d15438e37a279238cee9ce98e5064534fc43b"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-08-15T20:00:42.259420944Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:8b78d9ba523c14842e3c30e01107e08f20240d1fb7528dd59bb2e6b6f33f6960",
+            "size": 856
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "yxejwd669ah0v3vk4cbrqsqqv",
+                    "CreatedAt": "2026-08-15T20:00:44.018353627Z"
+                }
+            ]
+        }
+    }
+]
