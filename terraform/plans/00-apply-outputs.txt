@@ -1,0 +1,12 @@
+backend_instance_id = "i-0a0b6069ba4cba5aa"
+load_balancer_dns = "freshcart-dev-alb-2064836487.us-east-1.elb.amazonaws.com"
+load_balancer_zone_id = "Z35SXDOTRQ7X7K"
+private_subnet_ids = [
+  "subnet-0fdfcf6ed7c2259ca",
+  "subnet-08dd1ec9fef33fb4f",
+]
+public_subnet_ids = [
+  "subnet-0ea8cf3bdbc6068a3",
+  "subnet-03925cad2b79a9cd0",
+]
+vpc_id = "vpc-0fc8c9bdf72ac33db"

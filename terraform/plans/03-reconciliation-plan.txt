@@ -1,0 +1,28 @@
+Acquiring state lock. This may take a few moments...
+module.network.aws_vpc.this: Refreshing state... [id=vpc-0fc8c9bdf72ac33db]
+module.network.aws_eip.nat: Refreshing state... [id=eipalloc-016acba2c3142263f]
+module.network.aws_internet_gateway.this: Refreshing state... [id=igw-058f373453c98ef3a]
+module.network.aws_subnet.public[0]: Refreshing state... [id=subnet-0ea8cf3bdbc6068a3]
+module.network.aws_subnet.public[1]: Refreshing state... [id=subnet-03925cad2b79a9cd0]
+module.network.aws_subnet.private[1]: Refreshing state... [id=subnet-08dd1ec9fef33fb4f]
+module.network.aws_subnet.private[0]: Refreshing state... [id=subnet-0fdfcf6ed7c2259ca]
+aws_security_group.alb: Refreshing state... [id=sg-0b5b47e8e799dc449]
+aws_lb_target_group.checkout: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:688600819893:targetgroup/freshcart-dev-tg/4f0ded2e4f6a3e68]
+module.network.aws_route_table.public: Refreshing state... [id=rtb-07c649f10fa75b5ba]
+module.network.aws_nat_gateway.this: Refreshing state... [id=nat-0d92b71d6926496ab]
+aws_security_group.backend: Refreshing state... [id=sg-0f29dbc4f601b48f2]
+aws_lb.app: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:688600819893:loadbalancer/app/freshcart-dev-alb/bc854cc6ca978458]
+module.network.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0fd746b8ed10f7027]
+module.network.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0516847d1043df0ff]
+module.network.aws_route_table.private: Refreshing state... [id=rtb-099ebbefee1445744]
+aws_instance.backend: Refreshing state... [id=i-0a0b6069ba4cba5aa]
+module.network.aws_route_table_association.private[0]: Refreshing state... [id=rtbassoc-0f91718de379ef2c4]
+module.network.aws_route_table_association.private[1]: Refreshing state... [id=rtbassoc-00d53a7656b31ccbe]
+aws_lb_listener.http: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:688600819893:listener/app/freshcart-dev-alb/bc854cc6ca978458/32c412d0f44f5e64]
+aws_lb_target_group_attachment.backend: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:688600819893:targetgroup/freshcart-dev-tg/4f0ded2e4f6a3e68,i-0a0b6069ba4cba5aa,3000]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+Releasing state lock. This may take a few moments...

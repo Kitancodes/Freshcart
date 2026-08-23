@@ -200,6 +200,75 @@ Supporting documentation for the containerization work includes:
 
 The repository also contains the supporting scan and inspection files used during the vulnerability investigation.
 
+## Week 5: Terraform Infrastructure as Code
+
+I recreated the Week 3 AWS two-tier architecture in Terraform. The application infrastructure consists of an internet-facing Application Load Balancer, a private EC2 backend instance, two public subnets, two private subnets, a NAT Gateway, and reusable VPC networking.
+
+The private backend instance pulls and runs my Checkout API image from Docker Hub:
+
+```text
+kitancodes/freshcart-checkout-api:1.2
+```
+
+Terraform remote state is stored in a private S3 bucket, with DynamoDB used for state locking. State files and the `.terraform` directory are excluded from Git.
+
+### Terraform Module and Infrastructure Topology
+
+```mermaid
+flowchart TB
+    Users["Internet users"]
+
+    subgraph Root["Root Terraform configuration — application-specific resources"]
+        ALB["Application Load Balancer<br/>Plain resource: public HTTP entry point"]
+        ALBSG["ALB security group<br/>Plain resource: allows HTTP from the internet"]
+        TG["Target group and listener<br/>Plain resources: forward traffic and run health checks"]
+        BackendSG["Backend security group<br/>Plain resource: allows port 3000 only from ALB"]
+        Backend["Private EC2 backend<br/>Plain resource: runs Checkout API and PostgreSQL containers"]
+    end
+
+    subgraph Network["modules/network — reusable networking pattern"]
+        VPC["VPC: 10.0.0.0/16"]
+        Public["Two public subnets<br/>ALB placement"]
+        Private["Two private subnets<br/>EC2 placement"]
+        IGW["Internet Gateway"]
+        NAT["NAT Gateway + Elastic IP<br/>outbound access for private EC2"]
+        Routes["Public and private route tables"]
+    end
+
+    DockerHub["Docker Hub<br/>Checkout API image: 1.2"]
+    State["S3 remote state<br/>+ DynamoDB state lock"]
+
+    Users --> ALB
+    ALB --> ALBSG
+    ALB --> TG
+    TG --> BackendSG
+    BackendSG --> Backend
+    ALB --> Public
+    Backend --> Private
+    Backend -. pulls container image through NAT .-> DockerHub
+    Public --> IGW
+    Private --> NAT
+    NAT --> IGW
+    VPC --- Public
+    VPC --- Private
+    VPC --- Routes
+    Network -. module outputs: VPC and subnet IDs .-> Root
+    State -. stores Terraform state .-> Root
+```
+
+I extracted the VPC, subnets, internet gateway, NAT gateway, route tables, and route-table associations into a reusable `network` module because that networking pattern can be reused across environments. The root configuration keeps application-specific resources—such as the load balancer, security groups, target group, listener, and backend EC2 instance—because they are specific to FreshCart.
+
+### Terraform Plan Evidence
+
+- [Initial plan before infrastructure existed](terraform/plans/01-initial-plan.txt)
+- [Plan showing deliberate drift](terraform/plans/02-drift-plan.txt)
+- [Plan after reconciliation](terraform/plans/03-reconciliation-plan.txt)
+- [Deployed resource outputs](terraform/plans/00-apply-outputs.txt)
+
+### Drift Scenario and What It Taught Me
+
+I deliberately added a `DriftTest=manual-change` tag directly to the backend EC2 instance in the AWS Console. The next Terraform plan detected that the live infrastructure no longer matched my configuration and proposed removing that tag. If someone had blindly applied that plan, Terraform would have removed the manually added tag and restored the configuration’s previous desired state. Instead, I reconciled the drift by adding the tag to the EC2 resource in `main.tf`; the final reconciliation plan showed no changes, proving that the configuration and deployed infrastructure matched again.
+
 ## What I Learned
 
 This project changed the way I think about containerization.
@@ -209,6 +278,11 @@ I initially approached the vulnerability findings as something that needed to be
 The build-cache exercise also made Docker's layer model much more concrete for me. I now understand that a Dockerfile is not simply a list of commands used to create an image. The order of those commands affects caching, rebuild time, image contents, and the final runtime attack surface.
 
 I also learned that vulnerability scanning is not just about chasing a zero-vulnerability score. It is about understanding what was found, where it came from, whether a fix exists, and making a reasonable security decision.
+
+Week 5 showed me that Infrastructure as Code is not simply a faster way to create cloud resources. Terraform made the intended infrastructure explicit, reusable, reviewable, and reproducible. 
+
+The drift exercise was especially valuable: a small manual change in AWS was immediately visible in `terraform plan`, which showed exactly what Terraform would change if applied. 
+Remote state and locking also made it clear that infrastructure needs the same shared source of truth and collaboration controls as application code.
 
 ## Original Application
 
