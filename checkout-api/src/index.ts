@@ -10,7 +10,7 @@ const app = express();
 const port = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
-
+// pipeline test
 // Permissive CORS for local/dev use across services. Fine for this course's
 // purposes — a real production API would scope this to a known storefront origin.
 app.use((_req, res, next) => {

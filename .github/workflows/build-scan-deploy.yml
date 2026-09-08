@@ -1,0 +1,119 @@
+name: Build, Scan, Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'checkout-api/**'
+
+permissions:
+  id-token: write   # required for OIDC -> AWS
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: checkout-api
+  ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
+
+jobs:
+  build-scan-push:
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.vars.outputs.image_tag }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set image tag
+        id: vars
+        run: echo "image_tag=${GITHUB_SHA::8}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-checkout-api
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build image
+        working-directory: checkout-api
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.vars.outputs.image_tag }} .
+
+      - name: Log in to Docker Hub (required for Docker Scout)
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Scan image with Docker Scout
+        uses: docker/scout-action@v1
+        continue-on-error: true   # temporary: known findings below, tracked in blog writeup
+        with:
+          command: cves
+          image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ steps.vars.outputs.image_tag }}
+          only-severities: critical,high
+          exit-code: true
+
+      - name: Push image to ECR
+        if: success()
+        run: |
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.vars.outputs.image_tag }}
+
+  deploy-staging:
+    needs: build-scan-push
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-checkout-api
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy new image to staging EC2 via SSM
+        run: |
+          aws ssm send-command \
+            --instance-ids "${{ secrets.STAGING_INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --comment "Deploy checkout-api ${{ needs.build-scan-push.outputs.image_tag }} to staging" \
+            --parameters commands="[
+              \"aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}\",
+              \"docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ needs.build-scan-push.outputs.image_tag }}\",
+              \"docker stop checkout-api || true\",
+              \"docker rm checkout-api || true\",
+              \"docker run -d --name checkout-api -p 80:3000 --restart unless-stopped ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ needs.build-scan-push.outputs.image_tag }}\"
+            ]" \
+            --output text
+
+      - name: Record deployed tag
+        run: echo "Deployed ${{ needs.build-scan-push.outputs.image_tag }} to staging instance ${{ secrets.STAGING_INSTANCE_ID }}"
+
+  deploy-production:
+    needs: [build-scan-push, deploy-staging]
+    runs-on: ubuntu-latest
+    environment: production   # configure this environment with a required reviewer in repo settings
+    steps:
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-checkout-api
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Promote the SAME image tag to production EC2 via SSM
+        run: |
+          aws ssm send-command \
+            --instance-ids "${{ secrets.PROD_INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --comment "Promote checkout-api ${{ needs.build-scan-push.outputs.image_tag }} to production" \
+            --parameters commands="[
+              \"aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}\",
+              \"docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ needs.build-scan-push.outputs.image_tag }}\",
+              \"docker stop checkout-api || true\",
+              \"docker rm checkout-api || true\",
+              \"docker run -d --name checkout-api -p 80:3000 --restart unless-stopped ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ needs.build-scan-push.outputs.image_tag }}\"
+            ]" \
+            --output text
