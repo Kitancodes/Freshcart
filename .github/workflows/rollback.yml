@@ -9,7 +9,6 @@ on:
         type: string
 
 permissions:
-  id-token: write
   contents: read
 
 env:
@@ -22,10 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: production   # same required-reviewer gate as a normal prod deploy
     steps:
-      - name: Configure AWS credentials via OIDC
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-checkout-api
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Redeploy previous image tag to production
