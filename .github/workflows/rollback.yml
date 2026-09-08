@@ -1,0 +1,47 @@
+name: Rollback Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Previously-built image tag to roll back to (e.g. the commit hash from the last known-good deploy)'
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: checkout-api
+  ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment: production   # same required-reviewer gate as a normal prod deploy
+    steps:
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-checkout-api
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Redeploy previous image tag to production
+        run: |
+          aws ssm send-command \
+            --instance-ids "${{ secrets.PROD_INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --comment "Rollback checkout-api to ${{ inputs.image_tag }}" \
+            --parameters commands="[
+              \"aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}\",
+              \"docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ inputs.image_tag }}\",
+              \"docker stop checkout-api || true\",
+              \"docker rm checkout-api || true\",
+              \"docker run -d --name checkout-api -p 80:3000 --restart unless-stopped ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ inputs.image_tag }}\"
+            ]" \
+            --output text
+
+      - name: Confirm rollback target
+        run: echo "Rolled back production to ${{ inputs.image_tag }}"
