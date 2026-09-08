@@ -13,6 +13,7 @@ app.use(express.json());
 // pipeline test
 // Permissive CORS for local/dev use across services. Fine for this course's
 // purposes — a real production API would scope this to a known storefront origin.
+// CI/CD pipeline test - Week 6 capstone project
 app.use((_req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
