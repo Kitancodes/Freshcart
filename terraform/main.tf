@@ -134,6 +134,8 @@ resource "aws_instance" "backend" {
 
   associate_public_ip_address = false
 
+  iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
+
   user_data = templatefile("${path.module}/scripts/startup.sh", {
     container_image = var.container_image
     container_port  = var.container_port
