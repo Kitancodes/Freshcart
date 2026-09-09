@@ -1,0 +1,399 @@
+i-003837f5b1f2d915f	[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[0m[35m[40m[2J[01;01H[=3h[2J[01;01H[0m[37m[40m  Booting `Amazon Linux (6.18.39-79.141.amzn2023.x86_64) 2023'
+
+[    3.511504] systemd-journald[1113]: Received client request to flush runtime journal.
+[    3.752908] RPC: Registered named UNIX socket transport module.
+[    3.753629] RPC: Registered udp transport module.
+[    3.754249] RPC: Registered tcp transport module.
+[    3.754896] RPC: Registered tcp-with-tls transport module.
+[    3.755647] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    3.888279] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+[    3.902572] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+[    3.903794] i8042: Warning: Keylock active
+[    3.910088] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    3.910690] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    3.916631] ena 0000:00:05.0: Elastic Network Adapter (ENA) v2.17.2g
+[    3.923618] ena 0000:00:05.0: ENA device version: 0.10
+[    3.924221] ena 0000:00:05.0: ENA controller version: 0.0.1 implementation version 1
+[    3.944571] ACPI: button: Power Button [PWRF]
+[    3.945159] input: Sleep Button as /devices/LNXSYSTM:00/LNXSLPBN:00/input/input1
+[    3.946268] ACPI: button: Sleep Button [SLPF]
+[    4.012792] ena 0000:00:05.0: LLQ is not supported Fallback to host mode policy.
+[    4.026091] ena 0000:00:05.0: Elastic Network Adapter (ENA) found at mem 80400000, mac addr 02:9a:1d:89:ff:d1
+[    4.046348] ena 0000:00:05.0 ens5: renamed from eth0
+[    4.069590] nvme nvme0: using unchecked data buffer
+[    4.227304] zram_generator::config[1679]: zram0: system has too much memory (913MB), limit is 800MB, ignoring.
+[    6.252032] cloud-init[1837]: Cloud-init v. 22.2.2 running 'init' at Wed, 09 Sep 2026 09:11:53 +0000. Up 6.21 seconds.
+[    6.326409] cloud-init[1837]: ci-info: ++++++++++++++++++++++++++++++++++++++Net device info++++++++++++++++++++++++++++++++++++++
+[    6.328662] cloud-init[1837]: ci-info: +--------+------+----------------------------+---------------+--------+-------------------+
+[    6.330672] cloud-init[1837]: ci-info: | Device |  Up  |          Address           |      Mask     | Scope  |     Hw-Address    |
+[    6.332676] cloud-init[1837]: ci-info: +--------+------+----------------------------+---------------+--------+-------------------+
+[    6.334686] cloud-init[1837]: ci-info: |  ens5  | True |         10.0.3.111         | 255.255.255.0 | global | 02:9a:1d:89:ff:d1 |
+[    6.336685] cloud-init[1837]: ci-info: |  ens5  | True | fe80::9a:1dff:fe89:ffd1/64 |       .       |  link  | 02:9a:1d:89:ff:d1 |
+[    6.338645] cloud-init[1837]: ci-info: |   lo   | True |         127.0.0.1          |   255.0.0.0   |  host  |         .         |
+[    6.340623] cloud-init[1837]: ci-info: |   lo   | True |          ::1/128           |       .       |  host  |         .         |
+[    6.342598] cloud-init[1837]: ci-info: +--------+------+----------------------------+---------------+--------+-------------------+
+[    6.344596] cloud-init[1837]: ci-info: ++++++++++++++++++++++++++++Route IPv4 info+++++++++++++++++++++++++++++
+[    6.346316] cloud-init[1837]: ci-info: +-------+-------------+----------+-----------------+-----------+-------+
+[    6.348031] cloud-init[1837]: ci-info: | Route | Destination | Gateway  |     Genmask     | Interface | Flags |
+[    6.349823] cloud-init[1837]: ci-info: +-------+-------------+----------+-----------------+-----------+-------+
+[    6.351664] cloud-init[1837]: ci-info: |   0   |   0.0.0.0   | 10.0.3.1 |     0.0.0.0     |    ens5   |   UG  |
+[    6.353429] cloud-init[1837]: ci-info: |   1   |   10.0.0.2  | 10.0.3.1 | 255.255.255.255 |    ens5   |  UGH  |
+[    6.355165] cloud-init[1837]: ci-info: |   2   |   10.0.3.0  | 0.0.0.0  |  255.255.255.0  |    ens5   |   U   |
+[    6.356894] cloud-init[1837]: ci-info: |   3   |   10.0.3.1  | 0.0.0.0  | 255.255.255.255 |    ens5   |   UH  |
+[    6.358597] cloud-init[1837]: ci-info: +-------+-------------+----------+-----------------+-----------+-------+
+[    6.360308] cloud-init[1837]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+[    6.361838] cloud-init[1837]: ci-info: +-------+-------------+---------+-----------+-------+
+[    6.363388] cloud-init[1837]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+[    6.364900] cloud-init[1837]: ci-info: +-------+-------------+---------+-----------+-------+
+[    6.366446] cloud-init[1837]: ci-info: |   0   |  fe80::/64  |    ::   |    ens5   |   U   |
+[    6.367934] cloud-init[1837]: ci-info: |   2   |    local    |    ::   |    ens5   |   U   |
+[    6.369417] cloud-init[1837]: ci-info: |   3   |  multicast  |    ::   |    ens5   |   U   |
+[    6.370971] cloud-init[1837]: ci-info: +-------+-------------+---------+-----------+-------+
+[    7.259410] cloud-init[1837]: Generating public/private ed25519 key pair.
+[    7.260743] cloud-init[1837]: Your identification has been saved in /etc/ssh/ssh_host_ed25519_key
+[    7.262254] cloud-init[1837]: Your public key has been saved in /etc/ssh/ssh_host_ed25519_key.pub
+[    7.263741] cloud-init[1837]: The key fingerprint is:
+[    7.264620] cloud-init[1837]: SHA256:boKRFWtcilqPjRs40jK1LqDRQgsMHvBJ5PdCzRbrWmc root@ip-10-0-3-111.ec2.internal
+[    7.266343] cloud-init[1837]: The key's randomart image is:
+[    7.267469] cloud-init[1837]: +--[ED25519 256]--+
+[    7.268398] cloud-init[1837]: |+oo   o .        |
+[    7.269268] cloud-init[1837]: |++.. = B         |
+[    7.270122] cloud-init[1837]: |.+= = @          |
+[    7.270966] cloud-init[1837]: |o+.B %           |
+[    7.271818] cloud-init[1837]: |B.B B * E        |
+[    7.272656] cloud-init[1837]: |oB . O +         |
+[    7.273545] cloud-init[1837]: |o . + . o        |
+[    7.274396] cloud-init[1837]: | .     o         |
+[    7.275221] cloud-init[1837]: |                 |
+[    7.276074] cloud-init[1837]: +----[SHA256]-----+
+[    7.276918] cloud-init[1837]: Generating public/private ecdsa key pair.
+[    7.278018] cloud-init[1837]: Your identification has been saved in /etc/ssh/ssh_host_ecdsa_key
+[    7.279458] cloud-init[1837]: Your public key has been saved in /etc/ssh/ssh_host_ecdsa_key.pub
+[    7.280916] cloud-init[1837]: The key fingerprint is:
+[    7.281789] cloud-init[1837]: SHA256:x8RdkkNtQnFKbdrUEEwv3yBdK3Pg01viE2pYqqg9RWw root@ip-10-0-3-111.ec2.internal
+[    7.283428] cloud-init[1837]: The key's randomart image is:
+[    7.284363] cloud-init[1837]: +---[ECDSA 256]---+
+[    7.285191] cloud-init[1837]: |           o*O*+.|
+[    7.286026] cloud-init[1837]: |         . o=*Xoo|
+[    7.286854] cloud-init[1837]: |       .  o =&*+o|
+[    7.287685] cloud-init[1837]: |        Eo +.+**+|
+[    7.288533] cloud-init[1837]: |       oS = o o.o|
+[    7.289373] cloud-init[1837]: |       ..o .   . |
+[    7.290221] cloud-init[1837]: |      ...        |
+[    7.291051] cloud-init[1837]: |     o.          |
+[    7.291882] cloud-init[1837]: |    . ..         |
+[    7.292710] cloud-init[1837]: +----[SHA256]-----+
+[    7.806360] cloud-init[1924]: Cloud-init v. 22.2.2 running 'modules:config' at Wed, 09 Sep 2026 09:11:55 +0000. Up 7.72 seconds.
+[    8.316272] cloud-init[1935]: Cloud-init v. 22.2.2 running 'modules:final' at Wed, 09 Sep 2026 09:11:55 +0000. Up 8.26 seconds.
+
+Amazon Linux 2023.12.20260803
+Kernel 6.18.39-79.141.amzn2023.x86_64 on an x86_64 (-)
+
+ip-10-0-3-111 login: 2026/09/09 09:14:05Z: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: ec2 instance not yet registered with Systems Manager</error>
+[  193.769895] cloud-init[1935]: Amazon Linux 2023 repository                    411 kB/s |  75 MB     03:06
+[  211.269475] cloud-init[1935]: Amazon Linux 2023 Kernel Livepatch repository    76 kB/s |  69 kB     00:00
+[  213.060828] cloud-init[1935]: ================================================================================
+[  213.061067] cloud-init[1935]: WARNING:
+[  213.061189] cloud-init[1935]:   A newer release of "Amazon Linux" is available.
+[  213.061396] cloud-init[1935]:   Available Versions:
+[  213.061604] cloud-init[1935]:   Version 2023.12.20260817:
+[  213.061823] cloud-init[1935]:     Run the following command to upgrade to 2023.12.20260817:
+[  213.062034] cloud-init[1935]:       dnf upgrade --releasever=2023.12.20260817
+[  213.062246] cloud-init[1935]:     Release notes:
+[  213.062460] cloud-init[1935]:      https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.12.20260817.html
+[  213.062674] cloud-init[1935]:   Version 2023.12.20260831:
+[  213.062887] cloud-init[1935]:     Run the following command to upgrade to 2023.12.20260831:
+[  213.063101] cloud-init[1935]:       dnf upgrade --releasever=2023.12.20260831
+[  213.063308] cloud-init[1935]:     Release notes:
+[  213.063518] cloud-init[1935]:      https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.12.20260831.html
+[  213.063732] cloud-init[1935]: ================================================================================
+[  213.301599] cloud-init[1935]: Dependencies resolved.
+[  213.386877] cloud-init[1935]: Nothing to do.
+[  213.387730] cloud-init[1935]: Complete!
+[  213.994983] cloud-init[1935]: Last metadata expiration check: 0:00:03 ago on Wed Sep  9 09:15:20 2026.
+[  214.138450] cloud-init[1935]: Dependencies resolved.
+[  214.204767] cloud-init[1935]: ================================================================================
+[  214.204926] cloud-init[1935]:  Package                  Arch     Version                  Repository     Size
+[  214.205122] cloud-init[1935]: ================================================================================
+[  214.205322] cloud-init[1935]: Installing:
+[  214.205535] cloud-init[1935]:  docker                   x86_64   25.0.16-1.amzn2023.0.3   amazonlinux    47 M
+[  214.205755] cloud-init[1935]: Installing dependencies:
+[  214.205979] cloud-init[1935]:  container-selinux        noarch   4:2.245.0-1.amzn2023     amazonlinux    58 k
+[  214.206195] cloud-init[1935]:  containerd               x86_64   2.2.5-1.amzn2023.0.1     amazonlinux    24 M
+[  214.206405] cloud-init[1935]:  iptables-libs            x86_64   1.8.8-3.amzn2023.0.2     amazonlinux   401 k
+[  214.206613] cloud-init[1935]:  iptables-nft             x86_64   1.8.8-3.amzn2023.0.2     amazonlinux   183 k
+[  214.206831] cloud-init[1935]:  libcgroup                x86_64   3.0-1.amzn2023.0.1       amazonlinux    75 k
+[  214.207043] cloud-init[1935]:  libnetfilter_conntrack   x86_64   1.0.8-2.amzn2023.0.2     amazonlinux    58 k
+[  214.207254] cloud-init[1935]:  libnfnetlink             x86_64   1.0.1-19.amzn2023.0.2    amazonlinux    30 k
+[  214.207474] cloud-init[1935]:  libnftnl                 x86_64   1.2.2-2.amzn2023.0.2     amazonlinux    84 k
+[  214.207680] cloud-init[1935]:  pigz                     x86_64   2.5-1.amzn2023.0.4       amazonlinux    83 k
+[  214.207895] cloud-init[1935]:  runc                     x86_64   1.3.5-1.amzn2023.0.2     amazonlinux   3.9 M
+[  214.208101] cloud-init[1935]: Transaction Summary
+[  214.208309] cloud-init[1935]: ================================================================================
+[  214.208515] cloud-init[1935]: Install  11 Packages
+[  214.231134] cloud-init[1935]: Total download size: 76 M
+[  214.231322] cloud-init[1935]: Installed size: 284 M
+[  214.233097] cloud-init[1935]: Downloading Packages:
+[  214.710285] cloud-init[1935]: (1/11): container-selinux-2.245.0-1.amzn2023.no 133 kB/s |  58 kB     00:00
+[  214.740973] cloud-init[1935]: (2/11): iptables-libs-1.8.8-3.amzn2023.0.2.x86_  14 MB/s | 401 kB     00:00
+[  214.994241] cloud-init[1935]: (3/11): docker-25.0.16-1.amzn2023.0.3.x86_64.rp  65 MB/s |  47 MB     00:00
+[  214.999164] cloud-init[1935]: (4/11): iptables-nft-1.8.8-3.amzn2023.0.2.x86_6 717 kB/s | 183 kB     00:00
+[  215.022250] cloud-init[1935]: (5/11): libcgroup-3.0-1.amzn2023.0.1.x86_64.rpm 2.7 MB/s |  75 kB     00:00
+[  215.025217] cloud-init[1935]: (6/11): libnetfilter_conntrack-1.0.8-2.amzn2023 2.2 MB/s |  58 kB     00:00
+[  215.050216] cloud-init[1935]: (7/11): libnfnetlink-1.0.1-19.amzn2023.0.2.x86_ 1.1 MB/s |  30 kB     00:00
+[  215.055029] cloud-init[1935]: (8/11): libnftnl-1.2.2-2.amzn2023.0.2.x86_64.rp 2.8 MB/s |  84 kB     00:00
+[  215.076295] cloud-init[1935]: (9/11): pigz-2.5-1.amzn2023.0.4.x86_64.rpm      3.2 MB/s |  83 kB     00:00
+[  215.211715] cloud-init[1935]: (10/11): containerd-2.2.5-1.amzn2023.0.1.x86_64  26 MB/s |  24 MB     00:00
+[  215.234864] cloud-init[1935]: (11/11): runc-1.3.5-1.amzn2023.0.2.x86_64.rpm    22 MB/s | 3.9 MB     00:00
+[  215.236720] cloud-init[1935]: --------------------------------------------------------------------------------
+[  215.238487] cloud-init[1935]: Total                                            76 MB/s |  76 MB     00:01
+[  216.055640] cloud-init[1935]: Running transaction check
+[  216.094216] cloud-init[1935]: Transaction check succeeded.
+[  216.095348] cloud-init[1935]: Running transaction test
+[  216.902527] cloud-init[1935]: Transaction test succeeded.
+[  216.902697] cloud-init[1935]: Running transaction
+[  217.770593] cloud-init[1935]:   Preparing        :                                                        1/1
+[  218.272000] cloud-init[1935]:   Installing       : runc-1.3.5-1.amzn2023.0.2.x86_64                      1/11
+[  218.277246] cloud-init[1935]:   Installing       : containerd-2.2.5-1.amzn2023.0.1.x86_64                2/11
+[  218.316656] cloud-init[1935]:   Running scriptlet: containerd-2.2.5-1.amzn2023.0.1.x86_64                2/11
+[  218.326572] cloud-init[1935]:   Installing       : pigz-2.5-1.amzn2023.0.4.x86_64                        3/11
+[  218.333612] cloud-init[1935]:   Installing       : libnftnl-1.2.2-2.amzn2023.0.2.x86_64                  4/11
+[  218.340206] cloud-init[1935]:   Installing       : libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64             5/11
+[  218.451961] cloud-init[1935]:   Installing       : libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64    6/11
+[  218.489541] cloud-init[1935]:   Installing       : iptables-libs-1.8.8-3.amzn2023.0.2.x86_64             7/11
+[  218.497073] cloud-init[1935]:   Installing       : iptables-nft-1.8.8-3.amzn2023.0.2.x86_64              8/11
+[  218.528923] cloud-init[1935]:   Running scriptlet: iptables-nft-1.8.8-3.amzn2023.0.2.x86_64              8/11
+[  218.534262] cloud-init[1935]:   Installing       : libcgroup-3.0-1.amzn2023.0.1.x86_64                   9/11
+[  218.555078] cloud-init[1935]:   Running scriptlet: container-selinux-4:2.245.0-1.amzn2023.noarch        10/11
+[  218.567244] cloud-init[1935]:   Installing       : container-selinux-4:2.245.0-1.amzn2023.noarch        10/11
+[  228.887059] SELinux:  Permission firmware_load in class system not defined in policy.
+[  228.888024] SELinux:  Permission kexec_image_load in class system not defined in policy.
+[  228.889114] SELinux:  Permission kexec_initramfs_load in class system not defined in policy.
+[  228.890265] SELinux:  Permission policy_load in class system not defined in policy.
+[  228.891308] SELinux:  Permission x509_certificate_load in class system not defined in policy.
+[  228.892495] SELinux:  Permission watch_mountns in class file not defined in policy.
+[  228.893510] SELinux:  Permission watch_mountns in class dir not defined in policy.
+[  228.894542] SELinux:  Permission watch_mountns in class lnk_file not defined in policy.
+[  228.895616] SELinux:  Permission watch_mountns in class chr_file not defined in policy.
+[  228.896704] SELinux:  Permission watch_mountns in class blk_file not defined in policy.
+[  228.897796] SELinux:  Permission watch_mountns in class sock_file not defined in policy.
+[  228.898891] SELinux:  Permission watch_mountns in class fifo_file not defined in policy.
+[  228.900010] SELinux:  Permission nlmsg in class netlink_route_socket not defined in policy.
+[  228.901137] SELinux:  Permission nlmsg in class netlink_tcpdiag_socket not defined in policy.
+[  228.902308] SELinux:  Permission nlmsg in class netlink_xfrm_socket not defined in policy.
+[  228.903419] SELinux:  Permission nlmsg in class netlink_audit_socket not defined in policy.
+[  228.904579] SELinux:  Permission watch_mountns in class anon_inode not defined in policy.
+[  228.905653] SELinux:  Permission allowed in class io_uring not defined in policy.
+[  228.906687] SELinux:  Class user_namespace not defined in policy.
+[  228.907497] SELinux: the above unknown classes and permissions will be allowed
+[  228.908578] SELinux:  Converting 325 SID table entries...
+[  228.915112] SELinux:  policy capability network_peer_controls=1
+[  228.915803] SELinux:  policy capability open_perms=1
+[  228.916480] SELinux:  policy capability extended_socket_class=1
+[  228.917270] SELinux:  policy capability always_check_network=0
+[  228.918066] SELinux:  policy capability cgroup_seclabel=1
+[  228.918810] SELinux:  policy capability nnp_nosuid_transition=1
+[  228.919609] SELinux:  policy capability genfs_seclabel_symlinks=1
+[  228.920440] SELinux:  policy capability ioctl_skip_cloexec=0
+[  228.921209] SELinux:  policy capability userspace_initial_context=0
+[  228.922085] SELinux:  policy capability netlink_xperm=0
+[  228.922771] SELinux:  policy capability netif_wildcard=0
+[  228.923485] SELinux:  policy capability genfs_seclabel_wildcard=0
+[  228.924325] SELinux:  policy capability functionfs_seclabel=0
+[  229.023311] cloud-init[1935]:   Running scriptlet: container-selinux-4:2.245.0-1.amzn2023.noarch        10/11
+[  230.195789] cloud-init[1935]:   Running scriptlet: docker-25.0.16-1.amzn2023.0.3.x86_64                 11/11
+[  230.205518] cloud-init[1935]:   Installing       : docker-25.0.16-1.amzn2023.0.3.x86_64                 11/11
+[  230.229360] cloud-init[1935]:   Running scriptlet: docker-25.0.16-1.amzn2023.0.3.x86_64                 11/11
+[  230.229498] cloud-init[1935]: Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /usr/lib/systemd/system/docker.socket.
+[  246.861757] cloud-init[1935]:   Running scriptlet: container-selinux-4:2.245.0-1.amzn2023.noarch        11/11
+[  247.421120] zram_generator::config[3166]: zram0: system has too much memory (913MB), limit is 800MB, ignoring.
+[  247.839922] cloud-init[1935]:   Running scriptlet: docker-25.0.16-1.amzn2023.0.3.x86_64                 11/11
+[  247.841286] cloud-init[1935]:   Verifying        : container-selinux-4:2.245.0-1.amzn2023.noarch         1/11
+[  247.841423] cloud-init[1935]:   Verifying        : containerd-2.2.5-1.amzn2023.0.1.x86_64                2/11
+[  247.841630] cloud-init[1935]:   Verifying        : docker-25.0.16-1.amzn2023.0.3.x86_64                  3/11
+[  247.842052] cloud-init[1935]:   Verifying        : iptables-libs-1.8.8-3.amzn2023.0.2.x86_64             4/11
+[  247.842276] cloud-init[1935]:   Verifying        : iptables-nft-1.8.8-3.amzn2023.0.2.x86_64              5/11
+[  247.842491] cloud-init[1935]:   Verifying        : libcgroup-3.0-1.amzn2023.0.1.x86_64                   6/11
+[  247.842704] cloud-init[1935]:   Verifying        : libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64    7/11
+[  247.842917] cloud-init[1935]:   Verifying        : libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64             8/11
+[  247.843138] cloud-init[1935]:   Verifying        : libnftnl-1.2.2-2.amzn2023.0.2.x86_64                  9/11
+[  247.855804] cloud-init[1935]:   Verifying        : pigz-2.5-1.amzn2023.0.4.x86_64                       10/11
+[  248.135456] cloud-init[1935]:   Verifying        : runc-1.3.5-1.amzn2023.0.2.x86_64                     11/11================================================================================
+[  248.138344] cloud-init[1935]: WARNING:
+[  248.139095] cloud-init[1935]:   A newer release of "Amazon Linux" is available.
+[  248.141420] cloud-init[1935]:   Available Versions:
+[  248.144720] cloud-init[1935]:   Version 2023.12.20260817:
+[  248.147047] cloud-init[1935]:     Run the following command to upgrade to 2023.12.20260817:
+[  248.148473] cloud-init[1935]:       dnf upgrade --releasever=2023.12.20260817
+[  248.149699] cloud-init[1935]:     Release notes:
+[  248.152379] cloud-init[1935]:      https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.12.20260817.html
+[  248.154202] cloud-init[1935]:   Version 2023.12.20260831:
+[  248.155144] cloud-init[1935]:     Run the following command to upgrade to 2023.12.20260831:
+[  248.156584] cloud-init[1935]:       dnf upgrade --releasever=2023.12.20260831
+[  248.157817] cloud-init[1935]:     Release notes:
+[  248.158650] cloud-init[1935]:      https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.12.20260831.html
+[  248.161685] cloud-init[1935]: ================================================================================
+[  248.315434] cloud-init[1935]:  
+[  248.316137] cloud-init[1935]: Installed:
+[  248.316866] cloud-init[1935]:   container-selinux-4:2.245.0-1.amzn2023.noarch
+[  248.318112] cloud-init[1935]:   containerd-2.2.5-1.amzn2023.0.1.x86_64
+[  248.319228] cloud-init[1935]:   docker-25.0.16-1.amzn2023.0.3.x86_64
+[  248.320519] cloud-init[1935]:   iptables-libs-1.8.8-3.amzn2023.0.2.x86_64
+[  248.323694] cloud-init[1935]:   iptables-nft-1.8.8-3.amzn2023.0.2.x86_64
+[  248.325534] cloud-init[1935]:   libcgroup-3.0-1.amzn2023.0.1.x86_64
+[  248.325628] cloud-init[1935]:   libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64
+[  248.325854] cloud-init[1935]:   libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64
+[  248.326076] cloud-init[1935]:   libnftnl-1.2.2-2.amzn2023.0.2.x86_64
+[  248.326516] cloud-init[1935]:   pigz-2.5-1.amzn2023.0.4.x86_64
+[  248.326733] cloud-init[1935]:   runc-1.3.5-1.amzn2023.0.2.x86_64
+[  248.326953] cloud-init[1935]: Complete!
+[  248.582907] cloud-init[1935]: Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+[  248.763554] zram_generator::config[5015]: zram0: system has too much memory (913MB), limit is 800MB, ignoring.
+[  249.876477] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+[  249.882706] Bridge firewalling registered
+[  250.095899] Initializing XFRM netlink socket
+[  250.524612] cloud-init[1935]: f1f3eb0378d56e99b25cf6523c70a6f264e7c81c624813ae4538823cad381bb2
+[  250.544449] cloud-init[1935]: freshcart-postgres-data
+[  250.584602] cloud-init[1935]: Unable to find image 'postgres:16' locally
+[  250.883954] cloud-init[1935]: 16: Pulling from library/postgres
+[  250.964048] cloud-init[1935]: 6310eb16bf42: Pulling fs layer
+[  250.964582] cloud-init[1935]: 4d710b756578: Pulling fs layer
+[  250.964958] cloud-init[1935]: 3fa541d8cac9: Pulling fs layer
+[  250.965140] cloud-init[1935]: b3ffe1fd6e79: Pulling fs layer
+[  250.965357] cloud-init[1935]: f122bc3261fc: Pulling fs layer
+[  250.965555] cloud-init[1935]: 5322d81b9b21: Pulling fs layer
+[  250.965769] cloud-init[1935]: 9bd242f25e75: Pulling fs layer
+[  250.965979] cloud-init[1935]: 9d1e9c1e61f4: Pulling fs layer
+[  250.966191] cloud-init[1935]: 48dd761b6bfe: Pulling fs layer
+[  250.966411] cloud-init[1935]: 00034b17b963: Pulling fs layer
+[  250.966613] cloud-init[1935]: 8a082189cfe1: Pulling fs layer
+[  250.967029] cloud-init[1935]: 988d57697ad2: Pulling fs layer
+[  250.967246] cloud-init[1935]: 9f809ec5ff35: Pulling fs layer
+[  250.967487] cloud-init[1935]: af7708f26521: Pulling fs layer
+[  250.967941] cloud-init[1935]: 9d1e9c1e61f4: Waiting
+[  250.968162] cloud-init[1935]: 48dd761b6bfe: Waiting
+[  250.968574] cloud-init[1935]: 00034b17b963: Waiting
+[  250.968794] cloud-init[1935]: 8a082189cfe1: Waiting
+[  250.969013] cloud-init[1935]: 988d57697ad2: Waiting
+[  250.969229] cloud-init[1935]: 9f809ec5ff35: Waiting
+[  250.969451] cloud-init[1935]: af7708f26521: Waiting
+[  250.970074] cloud-init[1935]: b3ffe1fd6e79: Waiting
+[  250.970530] cloud-init[1935]: f122bc3261fc: Waiting
+[  250.970921] cloud-init[1935]: 5322d81b9b21: Waiting
+[  250.971322] cloud-init[1935]: 9bd242f25e75: Waiting
+[  251.035452] cloud-init[1935]: 4d710b756578: Verifying Checksum
+[  251.035737] cloud-init[1935]: 4d710b756578: Download complete
+[  251.104393] cloud-init[1935]: 3fa541d8cac9: Verifying Checksum
+[  251.104712] cloud-init[1935]: 3fa541d8cac9: Download complete
+[  251.136637] cloud-init[1935]: b3ffe1fd6e79: Verifying Checksum
+[  251.136793] cloud-init[1935]: b3ffe1fd6e79: Download complete
+[  251.209576] cloud-init[1935]: 5322d81b9b21: Verifying Checksum
+[  251.209735] cloud-init[1935]: 5322d81b9b21: Download complete
+[  251.284486] cloud-init[1935]: f122bc3261fc: Verifying Checksum
+[  251.284652] cloud-init[1935]: f122bc3261fc: Download complete
+[  251.307604] cloud-init[1935]: 6310eb16bf42: Verifying Checksum
+[  251.307902] cloud-init[1935]: 6310eb16bf42: Download complete
+[  251.336324] cloud-init[1935]: 9bd242f25e75: Verifying Checksum
+[  251.336482] cloud-init[1935]: 9bd242f25e75: Download complete
+[  251.348282] cloud-init[1935]: 9d1e9c1e61f4: Verifying Checksum
+[  251.348438] cloud-init[1935]: 9d1e9c1e61f4: Download complete
+[  251.409724] cloud-init[1935]: 00034b17b963: Verifying Checksum
+[  251.409873] cloud-init[1935]: 00034b17b963: Download complete
+[  251.429161] cloud-init[1935]: 8a082189cfe1: Verifying Checksum
+[  251.429756] cloud-init[1935]: 8a082189cfe1: Download complete
+[  251.485647] cloud-init[1935]: 988d57697ad2: Verifying Checksum
+[  251.485970] cloud-init[1935]: 988d57697ad2: Download complete
+[  251.532915] cloud-init[1935]: 9f809ec5ff35: Verifying Checksum
+[  251.533043] cloud-init[1935]: 9f809ec5ff35: Download complete
+[  251.567486] cloud-init[1935]: af7708f26521: Verifying Checksum
+[  251.567644] cloud-init[1935]: af7708f26521: Download complete
+[  252.773461] cloud-init[1935]: 48dd761b6bfe: Verifying Checksum
+[  252.773711] cloud-init[1935]: 48dd761b6bfe: Download complete
+[  253.842035] cloud-init[1935]: 6310eb16bf42: Pull complete
+[  253.869085] cloud-init[1935]: 4d710b756578: Pull complete
+[  254.219007] cloud-init[1935]: 3fa541d8cac9: Pull complete
+[  254.297152] cloud-init[1935]: b3ffe1fd6e79: Pull complete
+[  254.874889] cloud-init[1935]: f122bc3261fc: Pull complete
+[  254.994398] cloud-init[1935]: 5322d81b9b21: Pull complete
+[  255.019684] cloud-init[1935]: 9bd242f25e75: Pull complete
+[  255.046323] cloud-init[1935]: 9d1e9c1e61f4: Pull complete
+[  260.460926] cloud-init[1935]: 48dd761b6bfe: Pull complete
+[  260.495022] cloud-init[1935]: 00034b17b963: Pull complete
+[  260.519349] cloud-init[1935]: 8a082189cfe1: Pull complete
+[  260.544338] cloud-init[1935]: 988d57697ad2: Pull complete
+[  260.568519] cloud-init[1935]: 9f809ec5ff35: Pull complete
+[  260.593653] cloud-init[1935]: af7708f26521: Pull complete
+[  260.627711] cloud-init[1935]: Digest: sha256:f1c3376c26f2609ab9f29f71f824103fe2fcd8ee0346485cb6122a4f93df6f94
+[  260.633353] cloud-init[1935]: Status: Downloaded newer image for postgres:16
+[  260.827239] cloud-init[1935]: 2607d2b8c6fbfb9b96afc88bcf1106c44e02b4714cc167d905317a1098b500cc
+[  260.854499] br-f1f3eb0378d5: port 1(veth85138ad) entered blocking state
+[  260.855316] br-f1f3eb0378d5: port 1(veth85138ad) entered disabled state
+[  260.856214] veth85138ad: entered allmulticast mode
+[  260.856919] veth85138ad: entered promiscuous mode
+[  261.382075] eth0: renamed from vethf690d50
+[  261.383637] br-f1f3eb0378d5: port 1(veth85138ad) entered blocking state
+[  261.384428] br-f1f3eb0378d5: port 1(veth85138ad) entered forwarding state
+[  261.700917] cloud-init[1935]: /var/run/postgresql:5432 - no response
+[  263.857305] cloud-init[1935]: /var/run/postgresql:5432 - accepting connections
+[  264.104271] cloud-init[1935]: 1.2: Pulling from kitancodes/freshcart-checkout-api
+[  264.191338] cloud-init[1935]: 55afa1ecc21d: Pulling fs layer
+[  264.192506] cloud-init[1935]: 08d42cdba493: Pulling fs layer
+[  264.193555] cloud-init[1935]: 4a7016f72779: Pulling fs layer
+[  264.194556] cloud-init[1935]: e27d3f3e3cb6: Pulling fs layer
+[  264.195592] cloud-init[1935]: 5355a7a9f800: Pulling fs layer
+[  264.196617] cloud-init[1935]: 9bd2367e3aed: Pulling fs layer
+[  264.197614] cloud-init[1935]: f52fbaa090f4: Pulling fs layer
+[  264.198595] cloud-init[1935]: 6d85e492f6da: Pulling fs layer
+[  264.199600] cloud-init[1935]: 9bd2367e3aed: Waiting
+[  264.202239] cloud-init[1935]: e27d3f3e3cb6: Waiting
+[  264.202328] cloud-init[1935]: 5355a7a9f800: Waiting
+[  264.203028] cloud-init[1935]: f52fbaa090f4: Waiting
+[  264.203207] cloud-init[1935]: 6d85e492f6da: Waiting
+[  264.263334] cloud-init[1935]: 4a7016f72779: Verifying Checksum
+[  264.263528] cloud-init[1935]: 4a7016f72779: Download complete
+[  264.302565] cloud-init[1935]: 55afa1ecc21d: Verifying Checksum
+[  264.304150] cloud-init[1935]: 55afa1ecc21d: Download complete
+[  264.345152] cloud-init[1935]: e27d3f3e3cb6: Verifying Checksum
+[  264.346490] cloud-init[1935]: e27d3f3e3cb6: Download complete
+[  264.371461] cloud-init[1935]: 5355a7a9f800: Verifying Checksum
+[  264.371657] cloud-init[1935]: 5355a7a9f800: Download complete
+[  264.459082] cloud-init[1935]: 9bd2367e3aed: Verifying Checksum
+[  264.459899] cloud-init[1935]: 9bd2367e3aed: Download complete
+[  264.561376] cloud-init[1935]: 6d85e492f6da: Verifying Checksum
+[  264.561530] cloud-init[1935]: 6d85e492f6da: Download complete
+[  264.632016] cloud-init[1935]: 55afa1ecc21d: Pull complete
+[  264.662266] cloud-init[1935]: f52fbaa090f4: Verifying Checksum
+[  264.662582] cloud-init[1935]: f52fbaa090f4: Download complete
+[  264.806706] cloud-init[1935]: 08d42cdba493: Verifying Checksum
+[  264.806862] cloud-init[1935]: 08d42cdba493: Download complete
+[  267.412894] cloud-init[1935]: 08d42cdba493: Pull complete
+[  267.535091] cloud-init[1935]: 4a7016f72779: Pull complete
+[  267.554895] cloud-init[1935]: e27d3f3e3cb6: Pull complete
+[  267.570752] cloud-init[1935]: 5355a7a9f800: Pull complete
+[  267.584711] cloud-init[1935]: 9bd2367e3aed: Pull complete
+[  267.907028] cloud-init[1935]: f52fbaa090f4: Pull complete
+[  267.924150] cloud-init[1935]: 6d85e492f6da: Pull complete
+[  267.942568] cloud-init[1935]: Digest: sha256:02bf1fe9b1f3bdfc0f316a4121b4e18801977b920eab4add7c49f77d30069e54
+[  267.947703] cloud-init[1935]: Status: Downloaded newer image for kitancodes/freshcart-checkout-api:1.2
+[  267.950357] cloud-init[1935]: docker.io/kitancodes/freshcart-checkout-api:1.2
+[  268.037974] cloud-init[1935]: 9df935413d7e15c0b0abe6ef92b5dd9e76da558adbc846c7d202f4f1d20c33b3
+[  268.042987] br-f1f3eb0378d5: port 2(vethf405827) entered blocking state
+[  268.043789] br-f1f3eb0378d5: port 2(vethf405827) entered disabled state
+[  268.044691] vethf405827: entered allmulticast mode
+[  268.045378] vethf405827: entered promiscuous mode
+[  268.362233] eth0: renamed from veth20978da
+[  268.363075] br-f1f3eb0378d5: port 2(vethf405827) entered blocking state
+[  268.363862] br-f1f3eb0378d5: port 2(vethf405827) entered forwarding state
+ci-info: no authorized SSH keys fingerprints found for user ec2-user.
+<14>Sep  9 09:16:17 cloud-init: #############################################################
+<14>Sep  9 09:16:17 cloud-init: -----BEGIN SSH HOST KEY FINGERPRINTS-----
+<14>Sep  9 09:16:17 cloud-init: 256 SHA256:x8RdkkNtQnFKbdrUEEwv3yBdK3Pg01viE2pYqqg9RWw root@ip-10-0-3-111.ec2.internal (ECDSA)
+<14>Sep  9 09:16:17 cloud-init: 256 SHA256:boKRFWtcilqPjRs40jK1LqDRQgsMHvBJ5PdCzRbrWmc root@ip-10-0-3-111.ec2.internal (ED25519)
+<14>Sep  9 09:16:17 cloud-init: -----END SSH HOST KEY FINGERPRINTS-----
+<14>Sep  9 09:16:17 cloud-init: #############################################################
+-----BEGIN SSH HOST KEY KEYS-----
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMB9RG2ZN+zlBZ9RFMJ6i3t/f7oBTNcYiis4Pw0JFIns42ktfWbqeXrkCJx75HYMMIj8QPrzY2M6/u8bwmG787Y= root@ip-10-0-3-111.ec2.internal
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP53mJyobSAjQlYav+Kzd6B7rf5lAK57LrV7Mbs8RLko root@ip-10-0-3-111.ec2.internal
+-----END SSH HOST KEY KEYS-----
+[  268.645120] cloud-init[1935]: Cloud-init v. 22.2.2 finished at Wed, 09 Sep 2026 09:16:18 +0000. Datasource DataSourceEc2.  Up 268.62 seconds
+	2026-09-09T09:19:23+00:00
