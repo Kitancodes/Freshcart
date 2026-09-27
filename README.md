@@ -269,6 +269,67 @@ I extracted the VPC, subnets, internet gateway, NAT gateway, route tables, and r
 
 I deliberately added a `DriftTest=manual-change` tag directly to the backend EC2 instance in the AWS Console. The next Terraform plan detected that the live infrastructure no longer matched my configuration and proposed removing that tag. If someone had blindly applied that plan, Terraform would have removed the manually added tag and restored the configuration’s previous desired state. Instead, I reconciled the drift by adding the tag to the EC2 resource in `main.tf`; the final reconciliation plan showed no changes, proving that the configuration and deployed infrastructure matched again.
 
+## Week 6: Kubernetes Deployment on Amazon EKS
+
+FreshCart was deployed to a real Amazon EKS cluster using Kubernetes. The application moved from local Docker Compose orchestration to a production-style deployment with Deployments, Services, Ingress, persistent storage, autoscaling, and namespace-scoped RBAC.
+
+The Kubernetes manifests for this deployment are located in the `k8s/` directory.
+
+### What I deployed
+
+- Amazon EKS cluster
+- `checkout-api` Deployment with multiple replicas and `/healthz` liveness and readiness probes
+- `storefront` Deployment with multiple replicas
+- ClusterIP Services for both applications
+- AWS Application Load Balancer Ingress
+- PostgreSQL with an AWS EBS-backed PersistentVolumeClaim
+- Kubernetes Secrets for database credentials
+- Horizontal Pod Autoscaler (HPA)
+- Namespace-scoped ServiceAccount, Role, and RoleBinding
+
+### Traffic flow
+
+```text
+Internet
+   │
+   ▼
+AWS Application Load Balancer
+   │
+   ▼
+freshcart-ingress
+   ├── /api → checkout-api Service → checkout-api Pods
+   └── / → storefront Service → storefront Pods
+
+checkout-api Pods
+      │
+      ▼
+postgres Service
+      │
+      ▼
+PostgreSQL Pod
+      │
+      ▼
+PersistentVolumeClaim
+      │
+      ▼
+AWS EBS
+
+### Autoscaling
+The Checkout API was configured with a Horizontal Pod Autoscaler with a minimum of 2 replicas, a maximum of 5 replicas, and a 70% CPU utilization target. During testing, sustained API traffic caused the HPA to scale the Deployment from 2 to 3 replicas, demonstrating automatic horizontal scaling based on workload.
+
+### Validation
+The deployment was verified by:
+
+- Routing traffic publicly through an AWS Application Load Balancer
+
+- Confirming PostgreSQL persistence with an EBS-backed PersistentVolumeClaim
+
+- Demonstrating self-healing by deleting a Pod and observing Kubernetes automatically create a replacement
+
+- Performing a rolling update between Amazon ECR image tags
+
+- Maintaining continuous successful API responses during the rolling update
+
 ## What I Learned
 
 This project changed the way I think about containerization.
@@ -283,6 +344,8 @@ Week 5 showed me that Infrastructure as Code is not simply a faster way to creat
 
 The drift exercise was especially valuable: a small manual change in AWS was immediately visible in `terraform plan`, which showed exactly what Terraform would change if applied. 
 Remote state and locking also made it clear that infrastructure needs the same shared source of truth and collaboration controls as application code.
+
+Week 6 extended that thinking into Kubernetes. Instead of thinking about individual servers and manually deciding where an application should run, I worked with desired state. Deployments maintained replica counts, Services provided stable networking, Ingress handled external routing, the HPA adjusted capacity based on CPU usage, and Kubernetes automatically reconciled the cluster when the running state no longer matched the intended state. The self-healing and rolling-update tests were especially valuable because they turned those Kubernetes concepts into observable behaviour rather than just configuration.
 
 ## Original Application
 
