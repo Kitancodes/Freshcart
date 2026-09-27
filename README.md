@@ -313,6 +313,7 @@ PersistentVolumeClaim
       │
       ▼
 AWS EBS
+```
 
 ### Autoscaling
 The Checkout API was configured with a Horizontal Pod Autoscaler with a minimum of 2 replicas, a maximum of 5 replicas, and a 70% CPU utilization target. During testing, sustained API traffic caused the HPA to scale the Deployment from 2 to 3 replicas, demonstrating automatic horizontal scaling based on workload.
