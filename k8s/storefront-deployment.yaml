@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront
+  namespace: freshcart
+  labels:
+    app: storefront
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: storefront
+
+  template:
+    metadata:
+      labels:
+        app: storefront
+
+    spec:
+      containers:
+        - name: storefront
+          image: 688600819893.dkr.ecr.us-east-1.amazonaws.com/storefront:1.0
+
+          ports:
+            - containerPort: 8080

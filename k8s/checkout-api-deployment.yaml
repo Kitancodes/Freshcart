@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout-api
+  namespace: freshcart
+  labels:
+    app: checkout-api
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: checkout-api
+
+  template:
+    metadata:
+      labels:
+        app: checkout-api
+
+    spec:
+      containers:
+        - name: checkout-api
+          image: 688600819893.dkr.ecr.us-east-1.amazonaws.com/checkout-api:1.5
+
+          ports:
+            - containerPort: 3000
+
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: checkout-api-secrets
+                  key: database-url
+
+            - name: PORT
+              value: "3000"
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 10
